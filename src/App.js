@@ -35,7 +35,7 @@ function App() {
     <div className="App">
       <input type='text' className='search-bar' placeholder='Search pokemon by name' onChange={e => setSearchInfo(e.target.value)}/>
       <ul className='cards-list' onScroll={e => {if(e.target.scrollTop === (e.target.scrollHeight - e.target.offsetHeight)) setCardsLimit(cardsLimit + 20)}}>
-        {pokemonList.filter(i => i.name.includes(searchInfo))
+        {pokemonList.filter(i => i.name.includes(searchInfo.toLowerCase()))
         .map((pokemon, index) => index < cardsLimit && 
           <li key={pokemon.name}>
             <Card changeInfo={changeInfo} url={pokemon.url} getInfo={currentId} showInfo={showInfo} />

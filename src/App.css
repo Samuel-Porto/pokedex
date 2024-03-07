@@ -28,6 +28,9 @@
   max-width: calc(100vw - 64px);
   outline: none;
 }
+.App .search-bar::placeholder {
+  color: rgb(224, 224, 224);
+}
 .App .cards-list {
   display: flex;
   flex-wrap: wrap;
