@@ -1,0 +1,179 @@
+@keyframes show-info {
+    from {top: 100dvh;}
+    to {top: 0;}
+}
+
+.container {
+    box-sizing: border-box;
+    padding: 128px 16px 0 16px;
+    position: relative;
+    width: 320px;
+}
+.main {
+    background: var(--card-color-background);
+    border-radius: 16px 16px 0 0;
+    box-sizing: border-box;
+    height: calc(100dvh - 136px);
+    padding-top: 80px;
+    position: relative;
+    transition: background-color .2s, color .2s;
+}
+.pokemon-image {
+    display: flex;align-items: center;
+    height: 128px;
+    justify-content: center;
+    left: 50%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, -64px);
+    width: 128px;
+    z-index: 1;
+}
+.main-container {
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0 8px 8px 8px;
+}
+.name {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: capitalize;
+}
+.id {
+    background: var(--color-highlighted);
+    border-radius: 8px;
+    color: var(--card-color-background);
+    font-size: 16px;
+    font-weight: 600;
+    left: 0;
+    margin: 8px;
+    padding: 4px 8px;
+    position: absolute;
+    top: 0;
+}
+.generation {
+    color: var(--card-color-background);
+    font-weight: 600;
+    margin: 4px 0;
+    text-align: center;
+}
+.generation > p {
+    background: var(--color-highlighted);
+    border-radius: 8px;
+    display: inline-block;
+    padding: 4px;
+    text-transform: uppercase;
+}
+.genera {
+    color: var(--color-font-secondary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 0;
+    text-align: center;
+}
+.types {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin: 8px 0;
+}
+.description {
+    font-size: 14px;
+    text-align: center;
+}
+.body-description {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0;
+}
+.abilities {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 4px;
+    text-transform: capitalize;
+}
+.body-description > li, .abilities > li {
+    background: var(--minicard-color-background);
+    border-radius: 8px;
+    flex: 1;
+    font-weight: 600;
+    padding: 4px 8px;
+    text-align: center;
+    white-space: nowrap;
+}
+.charts {
+    margin: 8px 0;
+}
+.charts > li {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+}
+.charts > li > p {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    margin: 4px 0;
+    padding: 2px 4px;
+    text-align: center;
+    width: 24px;
+}
+.charts > li > div {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+    flex: 1;
+    height: 16px;
+    overflow: hidden;
+    position: relative;
+}
+.charts > li > div > span {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: width .5s, background-color .5s;
+}
+.damages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: center;
+    margin: 16px 0;
+}
+.evolutions > ul {
+    display: flex;
+    overflow-x: auto;
+    padding: 4px;
+}
+.evolutions > ul > li {
+    flex: 1;
+    text-align: center;
+}
+
+@media screen and (max-width: 883px) {
+    .container {
+        padding: 128px 0 0 0;
+        width: 100%;
+    }
+    .main {
+        height: calc(100dvh - 128px);
+        left: 0;
+        margin: 128px 0 0 0;
+        position: absolute;
+        top: 0;
+        transition: top .2s;
+        width: 100%;
+    }
+    .container.hide > .main {
+        top: 100dvh;
+    }
+    .container.show > .main {
+        animation: show-info .2s;
+    }
+}

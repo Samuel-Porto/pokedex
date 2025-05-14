@@ -1,0 +1,30 @@
+@keyframes spin-anim {
+    from {rotate: 0deg;}
+    to {rotate: 360deg}
+}
+.fetched-image {
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+.error {
+    align-items: center;
+    background: rgba(0, 0, 0, .25);
+    border-radius: 32px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    justify-content: center;
+    transition: scale .2s;
+    width: 50px;
+}
+.error:hover {
+    scale: .8;
+}
+.loading {
+    animation: spin-anim 1s infinite linear;
+    scale: .8;
+}

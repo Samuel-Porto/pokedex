@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+@import './reset.css';
+@import './main.css';
+
+@keyframes show {
+    from {display: block; background: rgba(0, 0, 0, 0);}
+    to {background-color: rgba(0, 0, 0, .5);}
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@keyframes hide {
+    from {display: inline-block; background-color: rgba(0, 0, 0, .5);}
+    to {display: none; background-color: rgba(0, 0, 0, 0);}
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-container {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-areas: 'nav info' 'list info';
+    grid-template-columns: 1fr 320px;
+    grid-template-rows: 49px 1fr;
+    height: 100dvh;
+    overflow: hidden;
+    padding: 8px;
+    width: 100%;
+}
+.main-container > nav {
+    align-items: center;
+    display: flex;
+    grid-area: nav;
+}
+.main-container > main {
+    grid-area: list;
+    height: 100%;
+    overflow: auto;
+}
+.main-container > aside {
+    grid-area: info;
+    height: 100%;
+    transform: translateY(0);
+    transition: transform .2s;
+    width: 32px;
+}
+.main-container > aside.hide {
+    transform: translateY(100%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media screen and (max-width: 883px) {
+    .main-container {
+        grid-template-columns: 1fr 0;
+    }
+    .main-container > aside.show {
+        animation: show .5s forwards;
+    }
+    .main-container > aside.hide {
+        animation: hide .5s forwards;
+        transform: translateY(0);
+    }
+    .main-container > aside {
+        background-color: rgba(0, 0, 0, .25);
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
 }
