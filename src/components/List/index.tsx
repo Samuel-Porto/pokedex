@@ -1,37 +1,27 @@
-import styles from './List.module.css';
+import styles from './styles.module.css';
 
-import { loadPokemonList } from "../../hooks/api/pokemonApi";
-import { useState, useEffect } from "react";
-
+import { useEffect, useState } from "react";
 import Card from "../Card";
+import SearchNav from '../SearchNav';
 
 function List() {
-    const [pokemonList, setPokemonList] = useState<any[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [pokemonList, setPokemonList] = useState<{name: string, url: string}[]>([]);
+    const [limit, setLimit] = useState(60);
 
-    function loadList(offset: number, limit: number) {
-      setIsLoading(true);
-      loadPokemonList(offset, offset + limit > 1025? 1025 - offset: limit)
-      .then(data => addPokemonToList(data));
-    }
-
-    async function addPokemonToList(list: any[]) {
-      for (let i = 0; i < list.length; i++) {
-        await new Promise(resolve => setTimeout(resolve, 50));
-        setPokemonList(prev => [...prev, list[i]]);
-      }
-      setIsLoading(false);
-    }
-
-    useEffect(() => loadList(0, 60), []);
-
-    return ( <div>
+    useEffect(() => setLimit(60), [pokemonList]);
+    
+    return ( <div className={styles['list-container']}>
+      <nav className={styles.navigation}>
+        <SearchNav returnResult={(results: {name: string, url: string}[]) => {setPokemonList(results)}} />
+      </nav>
       <ul className={styles.list}>
-          {pokemonList.map(pokemon => <li key={pokemon.name}><Card pokemon={pokemon} /></li>)}
+          {pokemonList.map((pokemon, index) => index < limit && <li key={pokemon.name}><Card pokemon={pokemon} /></li>)}
       </ul>
-      <div className={styles['button-container']}>
-        {!isLoading && <button className={styles['button-load']} onClick={() => loadList(pokemonList.length, 60)}>Load more</button>}
-      </div>
+      {limit < pokemonList.length && 
+        <div className={styles['load-button_container']}>
+          <button className={styles['load-button']} onClick={() => setLimit(prev => prev + 60)}>Load more</button>
+        </div>
+      }
     </div>
     );
 }

@@ -1,0 +1,12 @@
+.bottom-card {
+    background: var(--card-color-background);
+    border-radius: 16px 16px 0 0;
+    height: calc(100dvh - 80px);
+    margin-top: 64px;
+    position: relative;
+}
+@media screen and (max-width: 883px) {
+    .bottom-card {
+        margin-top: 80px;
+    }
+}

@@ -1,11 +1,11 @@
 @keyframes show-card {
     from {
-        transform: translateY(8px);
         opacity: 0;
+        transform: translateY(8px);
     }
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translateY(0);
     }
 }
 @keyframes show-image-error {
@@ -44,11 +44,13 @@
     box-shadow: 0 0 rgba(0, 0, 0, 0);
     transform: translateY(4px);
 }
-.card > .image {
+.image {
     bottom: calc(100% - 48px);
+    height: 96px;
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
+    width: 96px;
 }
 .card > span {
     background: var(--color-highlighted);
@@ -74,4 +76,34 @@
     gap: 8px;
     justify-content: center;
     padding-top: 16px;
+}
+@media screen and (max-width: 883px) {
+    .card {
+        align-items: end;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        justify-content: end;
+        margin: 8px auto;
+        max-width: none;
+        padding: 8px 8px 8px 96px;
+    }
+    .image {
+        height: 64px;
+        left: 0;
+        transform: translateX(0);
+        width: 64px;
+    }
+    .card > span {
+        bottom: 0;
+        top: auto;
+    }
+    .card > p {
+        margin: 0;
+        max-width: 256px;
+        text-align: end;
+    }
+    .card > ul {
+        padding: 0;
+    }
 }

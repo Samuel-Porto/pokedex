@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
-import styles from './FetchedImage.module.css';
+import styles from './styles.module.css';
+
 import { AiOutlineReload } from "react-icons/ai";
+import { useEffect, useState } from "react";
 
 function FetchedImage({url, pixelated}: {url: string, pixelated: boolean}) {
     const [isImageLoaded, setIsImageLoaded] = useState(true);

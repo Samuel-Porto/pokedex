@@ -1,0 +1,43 @@
+.list > ul {
+    box-sizing: border-box;
+    display: flex;
+    gap: 8px;
+    height: 88px;
+}
+.list > ul > li {
+    border-right: 2px solid var(--color-highlighted-secondary);
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 4px 0;
+    padding: 4px 12px 4px 4px;
+}
+.list > ul > li:last-child {
+    border-right: none;
+}
+.list > ul > li > p {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.requirements {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+.requirements > li {
+    align-items: center;
+    display: flex;
+    gap: 4px;
+}
+.requirements > li > p {
+    background-color: var(--color-highlighted-secondary);
+    border-radius: 4px;
+    padding: 2px 4px;
+    white-space: pre;
+}
+.requirements > li > span {
+    text-transform: capitalize;
+    white-space: pre;
+}

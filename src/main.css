@@ -3,17 +3,21 @@
 :root {
     --card-color-background: rgb(252, 252, 252);
     --color-background: rgb(231, 231, 231);
+    --color-error: #e94e4e;
     --color-font-primary: #202020;
     --color-font-secondary: #747474;
+    --color-highlighted-secondary: rgba(0, 0, 0, .125);
     --color-highlighted: rgba(0, 0, 0, .5);
     --font-family: 'Poppins', sans-serif;
-    --minicard-color-background: rgb(225, 225, 225);
+    --minicard-color-background: rgb(200, 200, 200);
 }
 :root.dark {
     --card-color-background: rgb(34, 34, 34);
     --color-background: rgb(59, 59, 59);
+    --color-error: #e94e4e;
     --color-font-primary: #d6d6d6;
     --color-font-secondary: #9c9c9c;
+    --color-highlighted-secondary: rgba(255, 255, 255, .125);
     --color-highlighted: rgba(255, 255, 255, .5);
     --minicard-color-background: rgb(95, 95, 95);
 }

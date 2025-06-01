@@ -16,7 +16,7 @@ export async function getBasicPokemonInfo(pokemon: string | number, getSpeciesUr
         gif: data.sprites.versions['generation-v']['black-white'].animated.front_default,
     };
     info.stats = data.stats.map((stat: {[key: string]: any}) => ({name: stat.stat.name, stat: stat.base_stat}));
-
+    info.moves = data.moves;
     return getSpeciesUrl? {info, url: data.species.url}: info;
 }
 
@@ -32,11 +32,11 @@ export async function getFullPokemonInfo(pokemon: string| number) {
                 species[depth]?
                 species[depth].push({
                     url: evol.species.url,
-                    details: evol.evolution_details[0]
+                    details: evol.evolution_details
                 }):
                 species[depth] = [{
                     url: evol.species.url,
-                    details: evol.evolution_details[0]
+                    details: evol.evolution_details
                 }];
                 evol.evolves_to.forEach((nextEvol: {[key: string]: any}) => newEvolutions.push(nextEvol));
             });
@@ -60,6 +60,8 @@ export async function getFullPokemonInfo(pokemon: string| number) {
     info.generation = data.generation.name;
     info.isLegendary = data.is_legendary;
     info.isMythical = data.is_mythical;
+    info.genderRate = data.gender_rate;
+    info.indices = data.pokedex_numbers;
     
     request = await fetch(data.evolution_chain.url);
     data = await request.json();

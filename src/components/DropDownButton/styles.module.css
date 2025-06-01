@@ -1,0 +1,76 @@
+.drop-down {
+    align-items: center;
+    background: var(--card-color-background);
+    border-radius: 32px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .25);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    font-size: 12px;
+    font-weight: 600;
+    height: 32px;
+    min-width: 32px;
+    position: relative;
+    transition: max-width .2s;
+}
+.expand {
+    max-width: 128px;
+}
+.close {
+    max-width: 32px;
+}
+.drop-down > span {
+    align-items: center;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+}
+.drop-down > p {
+    padding-right: 8px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.drop-down > ul {
+    left: -1px;
+    max-height: 256px;
+    overflow-y: scroll;
+    position: absolute;
+    top: 32px;
+    transition: .2s max-height, .2s max-width;
+    z-index: -1;
+}
+.drop-down > ul.show {
+    max-width: 128px;
+    min-width: 64px;
+    width: 100%;
+}
+.drop-down > ul.hide {
+    max-height: 32px;
+    max-width: 100%;
+    overflow: hidden;
+}
+.drop-down > ul > li {
+    align-items: center;
+    border-radius: 32px;
+    box-sizing: border-box;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    margin: 2px 0;
+    overflow: hidden;
+    padding: 2px 4px;
+    text-align: center;
+    text-transform: capitalize;
+    transition: .2s transform;
+    width: 100%;
+}
+.drop-down > ul > li:not(.reset) {
+    background: var(--card-color-background);
+}
+.drop-down > ul.show > li {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .25);
+}
+.reset {
+    background: var(--color-error);
+}

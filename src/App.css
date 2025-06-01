@@ -1,64 +1,72 @@
 @import './reset.css';
 @import './main.css';
 
-@keyframes show {
-    from {display: block; background: rgba(0, 0, 0, 0);}
-    to {background-color: rgba(0, 0, 0, .5);}
-}
-
-@keyframes hide {
-    from {display: inline-block; background-color: rgba(0, 0, 0, .5);}
-    to {display: none; background-color: rgba(0, 0, 0, 0);}
-}
-
 .main-container {
     box-sizing: border-box;
-    display: grid;
-    grid-template-areas: 'nav info' 'list info';
-    grid-template-columns: 1fr 320px;
-    grid-template-rows: 49px 1fr;
+    display: flex;
     height: 100dvh;
     overflow: hidden;
-    padding: 8px;
     width: 100%;
 }
-.main-container > nav {
-    align-items: center;
-    display: flex;
-    grid-area: nav;
-}
 .main-container > main {
-    grid-area: list;
+    flex: 1;
     height: 100%;
     overflow: auto;
 }
 .main-container > aside {
-    grid-area: info;
-    height: 100%;
-    transform: translateY(0);
-    transition: transform .2s;
+    box-sizing: border-box;
+    height: 100vh;
+    min-width: 352px;
     width: 32px;
 }
-.main-container > aside.hide {
-    transform: translateY(100%);
+.main-container > aside > div {
+    padding: 16px;
 }
-
+.downloading-info {
+    align-items: center;
+    background-color: rgb(59, 59, 59);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 100dvh;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.downloading-info > img {
+    height: 192px;
+    object-fit: contain;
+    width: 192px;
+}
+.downloading-info > p {
+    color: var(--color-font-secondary);
+    font-weight: 600;
+}
 @media screen and (max-width: 883px) {
-    .main-container {
-        grid-template-columns: 1fr 0;
-    }
-    .main-container > aside.show {
-        animation: show .5s forwards;
-    }
-    .main-container > aside.hide {
-        animation: hide .5s forwards;
-        transform: translateY(0);
-    }
     .main-container > aside {
-        background-color: rgba(0, 0, 0, .25);
+        left: 0;
+        min-height: 100dvh;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+    .main-container > aside > div {
+        padding: 0;
+        position: relative;
+        z-index: 2;
+    }
+    .main-container > aside.show > span {
+        background: rgba(0, 0, 0, .5);
+        height: 100%;
         left: 0;
         position: absolute;
         top: 0;
         width: 100%;
+        z-index: 2;
+    }
+    .main-container > aside.hide {
+        display: none;
     }
 }

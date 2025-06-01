@@ -1,0 +1,9 @@
+.evolutions > ul {
+    display: flex;
+    overflow-x: auto;
+    padding: 4px;
+}
+.evolutions > ul > li {
+    flex: 1;
+    text-align: center;
+}

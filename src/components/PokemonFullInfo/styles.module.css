@@ -1,46 +1,56 @@
-@keyframes show-info {
-    from {top: 100dvh;}
-    to {top: 0;}
+@keyframes text-animation {
+    from {background-position-x: 0%}
+    to {background-position-x: 200%}
 }
-
-.container {
-    box-sizing: border-box;
-    padding: 128px 16px 0 16px;
-    position: relative;
-    width: 320px;
-}
-.main {
-    background: var(--card-color-background);
-    border-radius: 16px 16px 0 0;
-    box-sizing: border-box;
-    height: calc(100dvh - 136px);
-    padding-top: 80px;
-    position: relative;
-    transition: background-color .2s, color .2s;
-}
-.pokemon-image {
-    display: flex;align-items: center;
+.image {
+    bottom: 100%;
     height: 128px;
-    justify-content: center;
     left: 50%;
-    object-fit: contain;
     position: absolute;
-    top: 0;
-    transform: translate(-50%, -64px);
+    transform: translate(-50%, 50%);
     width: 128px;
     z-index: 1;
 }
 .main-container {
     box-sizing: border-box;
     height: 100%;
+    margin: 0 auto;
+    max-width: 432px;
+    padding-top: 64px;
+}
+.main {
+    box-sizing: border-box;
+    height: 100%;
     overflow-y: auto;
-    padding: 0 8px 8px 8px;
+    padding: 0 8px;
 }
 .name {
     font-size: 24px;
     font-weight: 600;
     text-align: center;
     text-transform: capitalize;
+}
+.special-titles {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 600;
+    gap: 8px;
+    padding: 8px;
+}
+.special-titles > li {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
+    background-clip: text;
+    background-size: 200%;
+    color: transparent;
+    padding: 4px 0;
+}
+.legendary {
+    animation: text-animation 4s infinite linear;
+}
+.mythical {
+    animation: text-animation 2s infinite linear;
 }
 .id {
     background: var(--color-highlighted);
@@ -53,6 +63,7 @@
     padding: 4px 8px;
     position: absolute;
     top: 0;
+    z-index: 1;
 }
 .generation {
     color: var(--card-color-background);
@@ -74,6 +85,21 @@
     padding: 4px 0;
     text-align: center;
 }
+.gender {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 8px;
+}
+.gender > p {
+    align-items: center;
+    background: var(--color-highlighted-secondary);
+    border-radius: 8px;
+    display: flex;
+    gap: 4px;
+    padding: 4px 8px;
+}
 .types {
     display: flex;
     gap: 4px;
@@ -81,13 +107,21 @@
     margin: 8px 0;
 }
 .description {
+    color: var(--color-font-secondary);
     font-size: 14px;
+    font-weight: 600;
     text-align: center;
 }
 .body-description {
     display: flex;
     gap: 8px;
+    justify-content: space-evenly;
     margin: 8px 0;
+}
+.body-description > li {
+    align-items: center;
+    display: flex;
+    gap: 4px;
 }
 .abilities {
     display: flex;
@@ -96,14 +130,23 @@
     padding: 4px 4px;
     text-transform: capitalize;
 }
+.body-description > li {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    width: 96px;
+}
 .body-description > li, .abilities > li {
     background: var(--minicard-color-background);
     border-radius: 8px;
-    flex: 1;
     font-weight: 600;
-    padding: 4px 8px;
     text-align: center;
     white-space: nowrap;
+}
+.abilities > li {
+    flex: 1;
+    padding: 4px 8px;
 }
 .charts {
     margin: 8px 0;
@@ -112,25 +155,41 @@
     align-items: center;
     display: flex;
     gap: 8px;
+    margin: 4px 0;
 }
 .charts > li > p {
+    align-items: center;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
+    box-sizing: border-box;
     color: white;
+    display: flex;
     font-size: 10px;
     font-weight: 600;
-    margin: 4px 0;
-    padding: 2px 4px;
+    height: 20px;
+    justify-content: center;
     text-align: center;
-    width: 24px;
+    width: 32px;
 }
 .charts > li > div {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
     flex: 1;
-    height: 16px;
+    height: 20px;
     overflow: hidden;
     position: relative;
+}
+.charts > li > div > p {
+    background: rgba(0, 0, 0, .25);
+    border-radius: 4px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    left: 50%;
+    padding: 2px 4px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 .charts > li > div > span {
     height: 100%;
@@ -146,30 +205,29 @@
     justify-content: center;
     margin: 16px 0;
 }
-.evolutions > ul {
+.tabs {
+    background: var(--card-color-background);
+    border-radius: 8px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .25);
     display: flex;
-    overflow-x: auto;
-    padding: 4px;
+    gap: 8px;
+    margin: 8px 4px;
+    position: sticky;
+    top: 4px;
 }
-.evolutions > ul > li {
+.tabs > li {
+    cursor: pointer;
     flex: 1;
+    font-weight: 600;
+    padding: 4px 2px;
     text-align: center;
+}
+.tabs > li.current {
+    background: var(--color-highlighted-secondary);
+    border-radius: 8px;
 }
 
 @media screen and (max-width: 883px) {
-    .container {
-        padding: 128px 0 0 0;
-        width: 100%;
-    }
-    .main {
-        height: calc(100dvh - 128px);
-        left: 0;
-        margin: 128px 0 0 0;
-        position: absolute;
-        top: 0;
-        transition: top .2s;
-        width: 100%;
-    }
     .container.hide > .main {
         top: 100dvh;
     }

@@ -1,6 +1,7 @@
-import React from 'react';
-import styles from './TypeCard.module.css';
+import styles from './styles.module.css';
+
 import typeColors from './typeColors.json';
+import React from 'react';
 
 interface typeCardProps {type: string; damage?: null|number}
 
